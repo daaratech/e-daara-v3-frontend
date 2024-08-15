@@ -1,0 +1,75 @@
+<template>
+    <v-calendar
+        ref="calendar"
+        v-model="value"
+        :events="events"
+        :view-mode="viewMode"
+        :weekdays="weekday"
+
+       :hide-header="timetable"
+       :hide-week-number="timetable"
+    ></v-calendar>
+</template>
+
+<script>
+import { useDate } from 'vuetify'
+  
+export default {
+    props: {
+        type: { type: String, default: 'month' }, // in ['month', 'week', 'day']
+        timetable: { type: Boolean, default: false }, // in ['month', 'week', 'day']
+    },
+    data: () => ({
+        value: [new Date()],
+        events: [],
+        colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
+        titles: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+    }),
+    computed: {
+        weekday() {
+            return this.timetable ? [1, 2, 3, 4, 5, 6] : [1, 2, 3, 4, 5, 6, 0]
+        },
+        viewMode() {
+            return this.timetable ? 'week' : this.type
+        },
+    },
+    mounted () {
+        const adapter = useDate()
+        this.getEvents({ start: adapter.startOfDay(adapter.startOfMonth(new Date())), end: adapter.endOfDay(adapter.endOfMonth(new Date())) })
+    },
+    methods: {
+        getEvents ({ start, end }) {
+            const events = []
+
+            const min = start
+            const max = end
+            const days = (max.getTime() - min.getTime()) / 86400000
+            const eventCount = this.rnd(days, days + 20)
+
+            for (let i = 0; i < eventCount; i++) {
+                const allDay = this.rnd(0, 3) === 0
+                const firstTimestamp = this.rnd(min.getTime(), max.getTime())
+                const first = new Date(firstTimestamp - (firstTimestamp % 900000))
+                const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 50000
+                const second = new Date(first.getTime() + secondTimestamp)
+    
+                events.push({
+                    title: this.titles[this.rnd(0, this.titles.length - 1)],
+                    start: first,
+                    end: second,
+                    color: this.colors[this.rnd(0, this.colors.length - 1)],
+                    allDay: !allDay,
+                })
+            }
+
+            this.events = events
+        },
+        getEventColor (event) {
+            return event.color
+        },
+        rnd (a, b) {
+            return Math.floor((b - a + 1) * Math.random()) + a
+        },
+    },
+}
+</script>
