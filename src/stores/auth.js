@@ -4,14 +4,14 @@ import { defineStore, getActivePinia } from 'pinia'
 export const useAuthStore = defineStore('auth', {
     state: () => ({
         user: {
-            loggedIn: false,
+            loggedIn: true,
             data: null
         }
     }),
 
     actions: {
         async logIn() {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 this.user.data = {
                     avatar: "https://cdn.vuetifyjs.com/images/john.jpg",
                     email: "oumar@edaara.io",
@@ -23,7 +23,7 @@ export const useAuthStore = defineStore('auth', {
         },
 
         async logOut() {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 getActivePinia()._s.forEach(store => store.$reset())
                 resolve()
             })

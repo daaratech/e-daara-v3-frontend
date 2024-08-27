@@ -106,20 +106,20 @@ const router = createRouter({
     extendRoutes: setupLayouts,
 })
 
-router.beforeEach((to, from, next) => {
-    const isLoggedIn = useAuthStore().user.loggedIn;
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    const requiresGuest = to.matched.some(record => record.meta.requiresGuest);
+// router.beforeEach((to, from, next) => {
+//     const isLoggedIn = useAuthStore().user.loggedIn;
+//     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+//     const requiresGuest = to.matched.some(record => record.meta.requiresGuest);
 
-    if (requiresAuth && !isLoggedIn) {
-        console.log("You are not authorized to access this area.");
-        next({ name: "login" });
-    } if (requiresGuest && isLoggedIn) {
-        console.log("You are already logged");
-        next({ name: 'dashboard' });
-    } else {
-        next();
-    }
-});
+//     if (requiresAuth && !isLoggedIn) {
+//         console.log("You are not authorized to access this area.");
+//         next({ name: "login" });
+//     } if (requiresGuest && isLoggedIn) {
+//         console.log("You are already logged");
+//         next({ name: 'dashboard' });
+//     } else {
+//         next();
+//     }
+// });
 
 export default router
