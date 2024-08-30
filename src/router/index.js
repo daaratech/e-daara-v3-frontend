@@ -73,9 +73,24 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        name: 'pedagogie-index',
-                        component: () => import('@/views/pedagogie/Index.vue'),
-                    }
+                        name: 'PedagogieIndex',
+                        component: () => import('@/views/pedagogie/HomeIndex.vue'),
+                    },
+                    {
+                      path: 'classes',
+                      name: 'ClasseIndex',
+                      component: () => import('@/views/pedagogie/ClasseIndex.vue'),
+                    },
+                    {
+                      path: 'enseignants',
+                      name: 'ProfessorIndex',
+                      component: () => import('@/views/pedagogie/ProfessorIndex.vue'),
+                    },
+                    {
+                      path: 'eleves',
+                      name: 'StudentIndex',
+                      component: () => import('@/views/pedagogie/StudentIndex.vue'),
+                    },
                 ]
             },
         ]
@@ -107,19 +122,20 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    const isLoggedIn = useAuthStore().user.loggedIn;
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    const requiresGuest = to.matched.some(record => record.meta.requiresGuest);
+    // const isLoggedIn = useAuthStore().user.loggedIn;
+    // const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    // const requiresGuest = to.matched.some(record => record.meta.requiresGuest);
 
-    if (requiresAuth && !isLoggedIn) {
-        console.log("You are not authorized to access this area.");
-        next({ name: "login" });
-    } if (requiresGuest && isLoggedIn) {
-        console.log("You are already logged");
-        next({ name: 'dashboard' });
-    } else {
-        next();
-    }
+    // if (requiresAuth && !isLoggedIn) {
+    //     console.log("You are not authorized to access this area.");
+    //     next({ name: "login" });
+    // } if (requiresGuest && isLoggedIn) {
+    //     console.log("You are already logged");
+    //     next({ name: 'dashboard' });
+    // } else {
+    //     next();
+    // }
+    next()
 });
 
 export default router

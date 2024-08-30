@@ -1,10 +1,5 @@
 <template>
-    <v-navigation-drawer
-        permanent
-        rail
-        expand-on-hover
-        order="-1"
-    >
+    <v-navigation-drawer permanent rail expand-on-hover order="-1">
         <v-list>
             <v-list-item
                 v-if="user"
@@ -29,20 +24,15 @@
 
         <template v-slot:append>
             <v-list nav>
-                <v-list-item
-                    prepend-icon="mdi-logout"
-                    title="Deconnexion"
-                    @click="logout"
-                ></v-list-item>
+                <v-list-item prepend-icon="mdi-logout" title="Deconnexion" @click="logout"></v-list-item>
             </v-list>
         </template>
     </v-navigation-drawer>
 
-    <v-app-bar
-        flat
-        border="b-sm"
-    >
-        <v-text-field
+    <v-app-bar app flat border="b-sm">
+        <v-app-bar-title class="text-subtitle-1 font-weight-bold">Current Module</v-app-bar-title>
+        <v-spacer></v-spacer>
+        <!-- <v-text-field
             placeholder="Recherche"
             variant="solo-inverted"
             max-width="300"
@@ -53,24 +43,24 @@
             clearable
             flat
         ></v-text-field>
-        <v-spacer></v-spacer>
+        <v-spacer></v-spacer> -->
         <user-client-info></user-client-info>
+        <v-spacer></v-spacer>
+        <toggle-theme></toggle-theme>
+        <div class="mx-2"></div>
         <user-popover></user-popover>
     </v-app-bar>
 
-    <v-app-bar
-        height="48"
-        order="1"
-        location="bottom"
-        flat
-    ></v-app-bar>
+    <v-app-bar height="48" order="1" location="bottom" flat></v-app-bar>
 
-    <router-view />
+    <v-main>
+        <router-view />
+    </v-main>
 </template>
 
 <script>
-import { useAppStore } from '@/stores/app'
-import { useAuthStore } from '@/stores/auth'
+import { useAppStore } from '@/stores/app';
+import { useAuthStore } from '@/stores/auth';
 
 export default {
     data: () => ({
@@ -78,27 +68,27 @@ export default {
         authStore: useAuthStore(),
         menu: [
             { title: 'Dashboard', icon: 'mdi-view-dashboard', route: 'dashboard' },
-            { title: 'Pedagogies', icon: 'mdi-school-outline', route: 'pedagogie-index' },
+            { title: 'Pedagogies', icon: 'mdi-school-outline', route: 'PedagogieIndex' },
             { title: 'Agenda', icon: 'mdi-calendar-outline', route: 'agenda-index' },
             { title: 'Evaluation', icon: 'mdi-scale-balance', route: 'evaluation-index' },
-            { title: 'Finances', icon: 'mdi-bank-outline', route: 'finance-index' },
+            { title: 'Finances', icon: 'mdi-bank-outline', route: 'finance-index' }
         ]
     }),
     computed: {
         appName() {
-            return this.appStore.appName
+            return this.appStore.appName;
         },
         appVersion() {
-            return this.appStore.appVersion
+            return this.appStore.appVersion;
         },
         user() {
-            return this.authStore.user.data
-        },
+            return this.authStore.user.data;
+        }
     },
     methods: {
         logout() {
-            this.authStore.logOut().then(() => this.$router.push({ name: 'login' }))
+            this.authStore.logOut().then(() => this.$router.push({ name: 'login' }));
         }
-    },
-}
+    }
+};
 </script>
