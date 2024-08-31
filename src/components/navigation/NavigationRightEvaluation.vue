@@ -4,7 +4,7 @@
             v-for="i in 8"
             :key="i"
             :title="`Nom module ${i}`"
-            :subtitle="`Coefficient ${i+2}`"
+            :subtitle="`Coefficient ${i + 2}`"
             :value="i"
             @click="onSelect(i)"
         >
@@ -20,15 +20,15 @@
 <script>
 export default {
     data: () => ({
-        selection: null,
+        selection: null
     }),
     methods: {
         onSelect(item) {
             // if (this.linkToRoute === true) {
             //     this.$router.push({query: { ...this.$route.query, ...{financeBucketId: item.id} } })
             // }
-            this.$emit('select', item)
-        },
-    },
-}
+            this.$emit('select', item);
+        }
+    }
+};
 </script>

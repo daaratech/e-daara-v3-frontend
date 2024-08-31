@@ -74,77 +74,79 @@
 </template>
 
 <script>
-import { useClientStore } from '@/stores/client'
+import { useClientStore } from '@/stores/client';
 
 export default {
     props: {
         linkToRoute: { type: Boolean, default: false },
-        selectFirst: { type: Boolean, default: false },
+        selectFirst: { type: Boolean, default: false }
     },
     data: () => ({
         clientStore: useClientStore(),
         selection: null,
         selectedBucket: null,
         dialogEdit: false,
-        dialogDelete: false,
+        dialogDelete: false
     }),
     computed: {
         financesBuckets() {
-            return this.clientStore.client.finances_buckets
+            return this.clientStore.client.finances_buckets;
         },
 
         renderDialogEdit() {
-            return this.selectedBucket !== null
+            return this.selectedBucket !== null;
         },
 
         renderDialogDelete() {
-            return this.selectedBucket !== null
-        },
+            return this.selectedBucket !== null;
+        }
     },
     created() {
-        if (this.selectFirst === true) setTimeout(() => this.selectFirstBucket(), 500)
+        if (this.selectFirst === true) setTimeout(() => this.selectFirstBucket(), 500);
     },
     methods: {
         computeColor(text) {
-            const colors = ['blue', 'red', 'green', 'orange', 'indigo', 'teal', 'pink']
-            const index = text.length % colors.length
-            return colors[index]
+            const colors = ['blue', 'red', 'green', 'orange', 'indigo', 'teal', 'pink'];
+            const index = text.length % colors.length;
+            return colors[index];
         },
 
-        openDialogEdit (selectedBucket) {
-            this.selectedBucket = selectedBucket
-            this.dialogEdit = true
+        openDialogEdit(selectedBucket) {
+            this.selectedBucket = selectedBucket;
+            this.dialogEdit = true;
         },
 
-        closeDialogEdit () {
-            this.selectedBucket = null
-            this.dialogEdit = false
+        closeDialogEdit() {
+            this.selectedBucket = null;
+            this.dialogEdit = false;
         },
 
-        openDialogDelete (selectedBucket) {
-            this.selectedBucket = selectedBucket
-            this.dialogDelete = true
+        openDialogDelete(selectedBucket) {
+            this.selectedBucket = selectedBucket;
+            this.dialogDelete = true;
         },
 
-        closeDialogDelete () {
-            this.selectedBucket = null
-            this.dialogDelete = false
+        closeDialogDelete() {
+            this.selectedBucket = null;
+            this.dialogDelete = false;
         },
 
         selectFirstBucket() {
             if (this.financesBuckets.length > 0) {
-                const firstBucket = this.financesBuckets[0]
-                this.onSelect(firstBucket)
-                this.selection = [firstBucket.id]
+                const firstBucket = this.financesBuckets[0];
+                this.onSelect(firstBucket);
+                this.selection = [firstBucket.id];
             }
         },
 
         onSelect(item) {
             if (this.linkToRoute === true) {
-                this.$router.push({query: { ...this.$route.query, ...{financeBucketId: item.id} } })
+                this.$router.push({
+                    query: { ...this.$route.query, ...{ financeBucketId: item.id } }
+                });
             }
-            this.$emit('select', item)
-        },
-    },
-}
+            this.$emit('select', item);
+        }
+    }
+};
 </script>

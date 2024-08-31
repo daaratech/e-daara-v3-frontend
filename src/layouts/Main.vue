@@ -24,13 +24,19 @@
 
         <template v-slot:append>
             <v-list nav>
-                <v-list-item prepend-icon="mdi-logout" title="Deconnexion" @click="logout"></v-list-item>
+                <v-list-item
+                    prepend-icon="mdi-logout"
+                    title="Deconnexion"
+                    @click="logout"
+                ></v-list-item>
             </v-list>
         </template>
     </v-navigation-drawer>
 
     <v-app-bar app flat border="b-sm">
-        <v-app-bar-title class="text-subtitle-1 font-weight-bold">Current Module</v-app-bar-title>
+        <v-app-bar-title class="text-subtitle-1 font-weight-bold"
+            >Current Module</v-app-bar-title
+        >
         <v-spacer></v-spacer>
         <!-- <v-text-field
             placeholder="Recherche"

@@ -1,8 +1,8 @@
 <template>
-  <div>test Student Index</div>
+    <div>test Student Index</div>
 </template>
 <script>
 export default {
-  name: 'StudentIndex'
-}
+    name: 'StudentIndex'
+};
 </script>

@@ -16,7 +16,7 @@
 <script>
 export default {
     props: {
-        search: { type: String, default: null },
+        search: { type: String, default: null }
     },
     data: () => ({
         headers: [
@@ -28,8 +28,8 @@ export default {
                 children: [
                     { title: 'Devoir 1', value: 's1dev1', width: '8%' },
                     { title: 'Devoir 2', value: 's1dev2', width: '8%' },
-                    { title: 'Examen', value: 's1exam', width: '8%' },
-                ],
+                    { title: 'Examen', value: 's1exam', width: '8%' }
+                ]
             },
             { width: '2%' },
             {
@@ -38,29 +38,29 @@ export default {
                 children: [
                     { title: 'Devoir 1', value: 's2dev1', width: '8%' },
                     { title: 'Devoir 2', value: 's2dev2', width: '8%' },
-                    { title: 'Examen', value: 's2exam', width: '8%' },
-                ],
-            },
+                    { title: 'Examen', value: 's2exam', width: '8%' }
+                ]
+            }
         ],
-        desserts: [],
+        desserts: []
     }),
     computed: {
         tableHeight() {
-            return window.innerHeight * 0.82
-        },
+            return window.innerHeight * 0.82;
+        }
     },
     created() {
         for (let i = 0; i < 30; i++) {
             this.desserts.push({
-                student_fullname: `Fullname Student ${i+1}`,
+                student_fullname: `Fullname Student ${i + 1}`,
                 s1dev1: '14',
                 s1dev2: '14',
                 s1exam: '14',
                 s2dev1: '20',
                 s2dev2: '17',
-                s2exam: '14',
-            })
+                s2exam: '14'
+            });
         }
-    },
-}
+    }
+};
 </script>

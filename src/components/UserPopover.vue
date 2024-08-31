@@ -27,10 +27,7 @@
             <v-divider></v-divider>
 
             <v-list>
-                <v-list-item
-                    prepend-icon="mdi-theme-light-dark"
-                    title="Mode Sombre"
-                >
+                <v-list-item prepend-icon="mdi-theme-light-dark" title="Mode Sombre">
                     <template v-slot:append>
                         <ToggleTheme></ToggleTheme>
                     </template>
@@ -52,17 +49,17 @@ import { useAuthStore } from '@/stores/auth';
 export default {
     data: () => ({
         authStore: useAuthStore(),
-        menu: false,
+        menu: false
     }),
     computed: {
         user() {
-            return this.authStore.user.data
+            return this.authStore.user.data;
         }
     },
     methods: {
         logout() {
-            this.authStore.logOut().then(() => this.$router.push({ name: 'login' }))
+            this.authStore.logOut().then(() => this.$router.push({ name: 'login' }));
         }
-    },
-}
+    }
+};
 </script>

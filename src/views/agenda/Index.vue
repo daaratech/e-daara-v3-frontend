@@ -15,7 +15,7 @@
                         title="Learn Vuetify"
                     ></v-card>
                 </v-col>
-    
+
                 <v-col cols="12" md="6">
                     <v-card
                         href="https://play.vuetifyjs.com"
@@ -25,7 +25,7 @@
                         title="Create a Playground"
                     ></v-card>
                 </v-col>
-    
+
                 <v-col cols="12" md="6">
                     <v-card
                         href="https://bin.vuetifyjs.com"
@@ -35,7 +35,7 @@
                         title="Create a Bin"
                     ></v-card>
                 </v-col>
-    
+
                 <v-col cols="12" md="6">
                     <v-card
                         href="https://issues.vuetifyjs.com"
@@ -52,6 +52,6 @@
 
 <script>
 export default {
-    // 
-}
+    //
+};
 </script>

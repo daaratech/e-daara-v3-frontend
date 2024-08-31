@@ -11,7 +11,7 @@ import { useAuthStore } from '@/stores/auth';
 
 export default {
     data: () => ({
-        authStore: useAuthStore(),
-    }),
-}
+        authStore: useAuthStore()
+    })
+};
 </script>

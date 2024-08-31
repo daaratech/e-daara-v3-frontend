@@ -1,10 +1,5 @@
 <template>
-    <v-card
-        class="mx-auto pa-12 pb-8"
-        elevation="8"
-        width="448"
-        rounded="lg"
-    >
+    <v-card class="mx-auto pa-12 pb-8" elevation="8" width="448" rounded="lg">
         <v-form @submit.prevent="submit">
             <div class="text-subtitle-1 text-medium-emphasis">Account</div>
 
@@ -15,7 +10,9 @@
                 variant="outlined"
             ></v-text-field>
 
-            <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
+            <div
+                class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between"
+            >
                 Password
                 <a
                     class="text-caption text-decoration-none font-weight-medium text-blue-darken-3"
@@ -73,19 +70,19 @@ export default {
         visible: false,
         formData: {
             email: 'oumar@edaara.io',
-            password: 'oumar@edaara.io',
-        },
+            password: 'oumar@edaara.io'
+        }
     }),
     methods: {
         submit() {
-            this.loading = true
+            this.loading = true;
             this.authStore.logIn().then(() => {
                 setTimeout(() => {
-                    this.loading = false
-                    this.$router.push({ name: 'prepare-workspace' })
+                    this.loading = false;
+                    this.$router.push({ name: 'prepare-workspace' });
                 }, 3000);
-            })
-        },
-    },
-}
+            });
+        }
+    }
+};
 </script>

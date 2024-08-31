@@ -22,8 +22,8 @@ export default {
                 children: [
                     { title: 'Devoir 1', value: 's1dev1', width: '8%' },
                     { title: 'Devoir 2', value: 's1dev2', width: '8%' },
-                    { title: 'Examen', value: 's1exam', width: '8%' },
-                ],
+                    { title: 'Examen', value: 's1exam', width: '8%' }
+                ]
             },
             { width: '2%' },
             {
@@ -32,9 +32,9 @@ export default {
                 children: [
                     { title: 'Devoir 1', value: 's2dev1', width: '8%' },
                     { title: 'Devoir 2', value: 's2dev2', width: '8%' },
-                    { title: 'Examen', value: 's2exam', width: '8%' },
-                ],
-            },
+                    { title: 'Examen', value: 's2exam', width: '8%' }
+                ]
+            }
         ],
         desserts: [
             {
@@ -45,7 +45,7 @@ export default {
                 s1exam: '14',
                 s2dev1: '20',
                 s2dev2: '17',
-                s2exam: '14',
+                s2exam: '14'
             },
             {
                 module_name: 'Matiere 02',
@@ -55,7 +55,7 @@ export default {
                 s1exam: '14',
                 s2dev1: '20',
                 s2dev2: '17',
-                s2exam: '14',
+                s2exam: '14'
             },
             {
                 module_name: 'Matiere 03',
@@ -65,7 +65,7 @@ export default {
                 s1exam: '14',
                 s2dev1: '20',
                 s2dev2: '17',
-                s2exam: '14',
+                s2exam: '14'
             },
             {
                 module_name: 'Matiere 05',
@@ -75,7 +75,7 @@ export default {
                 s1exam: '14',
                 s2dev1: '20',
                 s2dev2: '17',
-                s2exam: '14',
+                s2exam: '14'
             },
             {
                 module_name: 'Matiere 06',
@@ -85,9 +85,9 @@ export default {
                 s1exam: '14',
                 s2dev1: '20',
                 s2dev2: '17',
-                s2exam: '14',
-            },
-        ],
-    }),
-}
+                s2exam: '14'
+            }
+        ]
+    })
+};
 </script>

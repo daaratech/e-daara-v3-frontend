@@ -4,9 +4,7 @@
         image="https://vuetifyjs.b-cdn.net/docs/images/logos/v.png"
     >
         <template v-slot:title>
-            <div class="text- my-5">
-                Nous preparons votre espace de travail ...
-            </div>
+            <div class="text- my-5">Nous preparons votre espace de travail ...</div>
 
             <v-progress-linear
                 color="blue"
@@ -23,14 +21,14 @@ import { useClientStore } from '@/stores/client';
 
 export default {
     data: () => ({
-        clientStore: useClientStore(),
+        clientStore: useClientStore()
     }),
     created() {
         this.clientStore.getClientData().then(() => {
             setTimeout(() => {
-                this.$router.push({ name: 'dashboard' })
+                this.$router.push({ name: 'dashboard' });
             }, 3000);
-        })
-    },
-}
+        });
+    }
+};
 </script>

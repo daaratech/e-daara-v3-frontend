@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import { useAppStore } from '@/stores/app'
+import { useAppStore } from '@/stores/app';
 
 export default {
     data: () => ({
-        appStore: useAppStore(),
-    }),
-}
+        appStore: useAppStore()
+    })
+};
 </script>

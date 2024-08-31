@@ -1,6 +1,11 @@
 <template>
     <div id="chart">
-        <apexchart type="line" height="150" :options="chartOptions" :series="series"></apexchart>
+        <apexchart
+            type="line"
+            height="150"
+            :options="chartOptions"
+            :series="series"
+        ></apexchart>
     </div>
 </template>
 <script>

@@ -1,7 +1,7 @@
 // Composables
-import { createRouter, createWebHashHistory } from 'vue-router'
-import { setupLayouts } from 'virtual:generated-layouts'
-import { useAuthStore } from '@/stores/auth'
+import { createRouter, createWebHashHistory } from 'vue-router';
+import { setupLayouts } from 'virtual:generated-layouts';
+import { useAuthStore } from '@/stores/auth';
 
 const routes = [
     /**
@@ -15,8 +15,8 @@ const routes = [
             {
                 path: 'login',
                 name: 'login',
-                component: () => import('@/views/auth/SignIn.vue'),
-            },
+                component: () => import('@/views/auth/SignIn.vue')
+            }
         ]
     },
 
@@ -32,7 +32,7 @@ const routes = [
                 path: 'dashboard',
                 alias: '',
                 name: 'dashboard',
-                component: () => import('@/views/Dashboard.vue'),
+                component: () => import('@/views/Dashboard.vue')
             },
             {
                 path: 'agenda',
@@ -41,7 +41,7 @@ const routes = [
                     {
                         path: '',
                         name: 'agenda-index',
-                        component: () => import('@/views/agenda/Index.vue'),
+                        component: () => import('@/views/agenda/Index.vue')
                     }
                 ]
             },
@@ -52,7 +52,7 @@ const routes = [
                     {
                         path: '',
                         name: 'evaluation-index',
-                        component: () => import('@/views/evaluation/Index.vue'),
+                        component: () => import('@/views/evaluation/Index.vue')
                     }
                 ]
             },
@@ -63,7 +63,7 @@ const routes = [
                     {
                         path: '',
                         name: 'finance-index',
-                        component: () => import('@/views/finance/Index.vue'),
+                        component: () => import('@/views/finance/Index.vue')
                     }
                 ]
             },
@@ -74,25 +74,39 @@ const routes = [
                     {
                         path: '',
                         name: 'PedagogieIndex',
-                        component: () => import('@/views/pedagogie/HomeIndex.vue'),
+                        component: () => import('@/views/pedagogie/HomeIndex.vue')
                     },
                     {
-                      path: 'classes',
-                      name: 'ClasseIndex',
-                      component: () => import('@/views/pedagogie/ClasseIndex.vue'),
+                        path: 'classes',
+                        // component: () => import('@/views/pedagogie/ClasseContainer.vue'),
+                        children: [
+                            {
+                                path: '',
+                                name: 'ClasseIndex',
+                                component: () =>
+                                    import('@/views/pedagogie/classe/ClasseIndex.vue')
+                            },
+                            {
+                              path: ':id',
+                              name: 'ClasseShow',
+                              component: () =>
+                                  import('@/views/pedagogie/classe/ClasseShow.vue'),
+                              props: true
+                            },
+                        ]
                     },
                     {
-                      path: 'enseignants',
-                      name: 'ProfessorIndex',
-                      component: () => import('@/views/pedagogie/ProfessorIndex.vue'),
+                        path: 'enseignants',
+                        name: 'ProfessorIndex',
+                        component: () => import('@/views/pedagogie/ProfessorIndex.vue')
                     },
                     {
-                      path: 'eleves',
-                      name: 'StudentIndex',
-                      component: () => import('@/views/pedagogie/StudentIndex.vue'),
-                    },
+                        path: 'eleves',
+                        name: 'StudentIndex',
+                        component: () => import('@/views/pedagogie/StudentIndex.vue')
+                    }
                 ]
-            },
+            }
         ]
     },
 
@@ -112,14 +126,14 @@ const routes = [
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: () => import('@/views/NotFound.vue')
-    },
-]
+    }
+];
 
 const router = createRouter({
     routes,
     history: createWebHashHistory(import.meta.env.BASE_URL),
-    extendRoutes: setupLayouts,
-})
+    extendRoutes: setupLayouts
+});
 
 router.beforeEach((to, from, next) => {
     // const isLoggedIn = useAuthStore().user.loggedIn;
@@ -135,7 +149,7 @@ router.beforeEach((to, from, next) => {
     // } else {
     //     next();
     // }
-    next()
+    next();
 });
 
-export default router
+export default router;

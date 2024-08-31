@@ -1,8 +1,8 @@
 <template>
-  <div>test Professor Index</div>
+    <div>test Professor Index</div>
 </template>
 <script>
 export default {
-  name: 'ProfessorIndex'
-}
+    name: 'ProfessorIndex'
+};
 </script>

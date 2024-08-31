@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import { useClientStore } from '@/stores/client'
+import { useClientStore } from '@/stores/client';
 
 export default {
     data: () => ({
-        clientStore: useClientStore(),
-    }),
-}
+        clientStore: useClientStore()
+    })
+};
 </script>

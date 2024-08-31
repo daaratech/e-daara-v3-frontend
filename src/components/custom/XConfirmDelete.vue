@@ -1,21 +1,22 @@
 <template>
     <v-empty-state>
         <template v-slot:media>
-            <v-img :size="100" src="https://cdn.vuetifyjs.com/docs/images/components/v-empty-state/teamwork.png"></v-img>
+            <v-img
+                :size="100"
+                src="https://cdn.vuetifyjs.com/docs/images/components/v-empty-state/teamwork.png"
+            ></v-img>
         </template>
 
         <template v-slot:title>
-            <div class="text-subtitle-2 mt-8">
-                Confirmation
-            </div>
+            <div class="text-subtitle-2 mt-8">Confirmation</div>
         </template>
-  
+
         <template v-slot:text>
             <div class="text-caption">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores.
             </div>
         </template>
-  
+
         <template v-slot:actions>
             <v-btn
                 class="text-none"
@@ -27,7 +28,7 @@
                 width="96"
                 @click="$emit('confirm')"
             ></v-btn>
-    
+
             <v-btn
                 class="text-none"
                 elevation="1"

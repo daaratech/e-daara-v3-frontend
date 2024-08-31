@@ -5,11 +5,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "prettier": "prettier --config .prettierrc '**.{js,vue}' --write"
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
     "core-js": "^3.34.0",
+    "prettier": "^3.3.3",
     "roboto-fontface": "*",
     "vue": "^3.4.0",
     "vuetify": "^3.5.0"
