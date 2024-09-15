@@ -103,7 +103,19 @@ const routes = [
                     {
                         path: 'eleves',
                         name: 'StudentIndex',
-                        component: () => import('@/views/pedagogie/StudentIndex.vue')
+                        children: [
+                            {
+                              path: '',
+                              name: 'StudentIndex',
+                              component: () => import('@/views/pedagogie/student/StudentIndex.vue'),
+                            },
+                            {
+                              path: ':id',
+                              name: 'StudentShow',
+                              component: () => import('@/views/pedagogie/student/StudentShow.vue'),
+                              props: true
+                            },
+                          ]
                     }
                 ]
             }

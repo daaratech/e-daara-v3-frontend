@@ -1,59 +1,68 @@
 <template>
-  <v-app-bar id="test" elevation="0" color="transparent" height="200">
-    <v-sheet elevation="1" color="#eeeeee" class="ma-2">
-            <h4 class="text-center">Infos Utils</h4>
-            <v-container fluid>
-                <v-row>
-                    <v-col cols="12" md="4" lg="3">
-                        <v-card color="#385F73" class="pb-5">
-                            <v-card-title class="text-h5">
-                                Unlimited music now
-                            </v-card-title>
+    <v-app-bar
+        id="test"
+        elevation="1"
+        color="#eeeeee"
+        :height="showSupInfo ? 200 : 56"
+    >
+        <v-sheet color="#eeeeee" class="ma-2">
+            <v-fade-transition>
+              <v-container v-show="showSupInfo">
+                <h4 class="text-center">Infos Utils</h4>
+                <div fluid>
+                    <v-row>
+                        <v-col cols="12" md="4" lg="3">
+                            <v-card color="#385F73" class="pb-5">
+                                <v-card-title class="text-h5">
+                                    Unlimited music now
+                                </v-card-title>
 
-                            <v-card-subtitle>
-                                Listen to your favorite artists and albums whenever and
-                                wherever, online and offline.
-                            </v-card-subtitle>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="12" md="4" lg="3">
-                        <v-card color="#385F73" class="pb-5">
-                            <v-card-title class="text-h5">
-                                Unlimited music now
-                            </v-card-title>
+                                <v-card-subtitle>
+                                    Listen to your favorite artists and albums whenever
+                                    and wherever, online and offline.
+                                </v-card-subtitle>
+                            </v-card>
+                        </v-col>
+                        <v-col cols="12" md="4" lg="3">
+                            <v-card color="#385F73" class="pb-5">
+                                <v-card-title class="text-h5">
+                                    Unlimited music now
+                                </v-card-title>
 
-                            <v-card-subtitle>
-                                Listen to your favorite artists and albums whenever and
-                                wherever, online and offline.
-                            </v-card-subtitle>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="12" md="4" lg="3">
-                        <v-card color="#385F73" class="pb-5">
-                            <v-card-title class="text-h5">
-                                Unlimited music now
-                            </v-card-title>
+                                <v-card-subtitle>
+                                    Listen to your favorite artists and albums whenever
+                                    and wherever, online and offline.
+                                </v-card-subtitle>
+                            </v-card>
+                        </v-col>
+                        <v-col cols="12" md="4" lg="3">
+                            <v-card color="#385F73" class="pb-5">
+                                <v-card-title class="text-h5">
+                                    Unlimited music now
+                                </v-card-title>
 
-                            <v-card-subtitle>
-                                Listen to your favorite artists and albums whenever and
-                                wherever, online and offline.
-                            </v-card-subtitle>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="12" md="4" lg="3">
-                        <v-card color="#385F73" class="pb-5">
-                            <v-card-title class="text-h5">
-                                Unlimited music now
-                            </v-card-title>
+                                <v-card-subtitle>
+                                    Listen to your favorite artists and albums whenever
+                                    and wherever, online and offline.
+                                </v-card-subtitle>
+                            </v-card>
+                        </v-col>
+                        <v-col cols="12" md="4" lg="3">
+                            <v-card color="#385F73" class="pb-5">
+                                <v-card-title class="text-h5">
+                                    Unlimited music now
+                                </v-card-title>
 
-                            <v-card-subtitle>
-                                Listen to your favorite artists and albums whenever and
-                                wherever, online and offline.
-                            </v-card-subtitle>
-                        </v-card>
-                    </v-col>
-                </v-row>
-            </v-container>
+                                <v-card-subtitle>
+                                    Listen to your favorite artists and albums whenever
+                                    and wherever, online and offline.
+                                </v-card-subtitle>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </div>
+              </v-container>
+            </v-fade-transition>
             <v-tabs v-model="tabs" height="50">
                 <v-tab
                     v-for="(tab, key) in pedagogieMenu"
@@ -65,7 +74,7 @@
                 </v-tab>
             </v-tabs>
         </v-sheet>
-  </v-app-bar>
+    </v-app-bar>
     <v-container fluid class="pa-0">
         <!-- <v-sheet elevation="1" color="#eeeeee" class="ma-2">
             <h4 class="text-center">Infos Utils</h4>
@@ -177,7 +186,8 @@ export default {
                 routeName: 'ProfessorIndex',
                 component: 'ProfessorIndex'
             }
-        ]
+        ],
+        showSupInfo: true
     }),
     computed: {
         leftWidth() {
@@ -185,6 +195,22 @@ export default {
         },
         rightWidth() {
             return this.appStore.frontendConfigs.sidebars.rightWidth;
+        }
+    },
+    mounted() {
+        console.log(this.$route.name);
+        console.log(this.showSupInfo)
+
+    },
+    watch: {
+        $route(to) {
+            console.log(to.name);
+            console.log(this.showSupInfo);
+            if (!this.pedagogieMenu.find((tab) => tab.routeName === to.name)) {
+                this.showSupInfo = false;
+            } else {
+                this.showSupInfo = true;
+            }
         }
     }
 };

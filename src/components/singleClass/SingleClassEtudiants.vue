@@ -4,7 +4,6 @@
         type="list-item-avatar-two-line@10"
         color="transparent"
     ></v-skeleton-loader>
-
     <v-list v-else bg-color="transparent">
         <v-list-item v-for="i in 40" :key="i">
             <template v-slot:prepend>
