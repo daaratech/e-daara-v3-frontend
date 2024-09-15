@@ -157,11 +157,11 @@
 import { useAppStore } from '@/stores/app';
 import HomeIndex from '@/views/pedagogie/HomeIndex.vue';
 import ClasseContainer from '@/views/pedagogie/ClasseContainer.vue';
-import StudentIndex from '@/views/pedagogie/StudentIndex.vue';
+import StudentContainer from '@/views/pedagogie/StudentContainer.vue';
 import ProfessorIndex from '@/views/pedagogie/ProfessorIndex.vue';
 
 export default {
-    components: { HomeIndex, ClasseContainer, StudentIndex, ProfessorIndex },
+    components: { HomeIndex, ClasseContainer, StudentContainer, ProfessorIndex },
     data: () => ({
         appStore: useAppStore(),
         tabs: null,
@@ -179,7 +179,7 @@ export default {
             {
                 name: 'Élèves',
                 routeName: 'StudentIndex',
-                component: 'StudentIndex'
+                component: 'StudentContainer'
             },
             {
                 name: 'Enseignant',

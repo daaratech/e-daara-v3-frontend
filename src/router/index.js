@@ -102,7 +102,6 @@ const routes = [
                     },
                     {
                         path: 'eleves',
-                        name: 'StudentIndex',
                         children: [
                             {
                               path: '',
